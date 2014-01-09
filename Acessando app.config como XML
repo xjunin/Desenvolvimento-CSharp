@@ -1,0 +1,7 @@
+System.Xml.XmlDocument xml = new System.Xml.XmlDocument();
+xml.Load(txtFilename.Text + ".config");
+System.Xml.XmlNode node;
+node = xml.SelectSingleNode("configuration/applicationSettings/Meu_espaço.Properties.Settings/setting[@name='sUseDominio']");
+MessageBox.Show(node.ChildNodes[0].InnerText);
+node.ChildNodes[0].InnerText = myNewValue;
+xml.Save(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile);
